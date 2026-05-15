@@ -2,75 +2,88 @@
 
 Use this template when the user wants a complete Markdown document for personal-growth storage.
 
-Keep each item in the user's original language where practical: Chinese notes remain Chinese, English notes remain English, and mixed notes can stay mixed.
+## Language Support
+
+Before generating the reflection, confirm the output language when it is not specified:
+
+- Preserve mixed language: keep each item close to the source language.
+- Chinese: use Chinese headings and Chinese summaries.
+- English: use English headings and English summaries.
+- Custom: follow the user's requested language or bilingual style.
+
+Always preserve names, direct quotes, tool names, task names, URLs, code identifiers, and technical terms when translation would reduce precision.
+
+## Template Keys
+
+Translate these section headings into the selected output language. For preserve-mixed mode, use the user's dominant language for headings.
 
 ```markdown
-# YYYY-MM-DD 个人复盘总结
+# YYYY-MM-DD [Daily Reflection Title]
 
-## 原始记录
+## [Raw Record]
 > 
 
-## 今日概览
+## [Daily Overview]
 - 
 
-## 事实记录
-### 工作 / 项目
+## [Facts]
+### [Work / Projects]
 - 
 
-### 关系 / 沟通
+### [Relationships / Communication]
 - 
 
-### 生活 / 健康 / 金钱
+### [Life / Health / Money]
 - 
 
-### 工具 / 系统 / 信息源
+### [Tools / Systems / Sources]
 - 
 
-## 今日思考
+## [Today's Thoughts]
 - 
 
-## 状态分析
-### 情绪状态
+## [State Analysis]
+### [Emotional State]
 - 
 
-### 工作情况
+### [Work State]
 - 
 
-### 人际交往与关系
+### [Interpersonal Relationships]
 - 
 
-## 暴露的问题
+## [Exposed Problems]
 - 
 
-## 长期偏好与稳定模式
-### 已确认偏好
+## [Long-Term Preferences and Patterns]
+### [Confirmed Preferences]
 - 
 
-### 待确认模式
+### [Patterns To Verify]
 - 
 
-### 一次性事件
+### [One-Off Events]
 - 
 
-## 发现的亮点
+## [Highlights]
 - 
 
-## 可转化的行动
+## [Convertible Actions]
 - 
 
-## 可入库摘要
+## [Archive-Ready Summary]
 - 
 ```
 
-Section intent:
+## Section Intent
 
-- 今日概览: the whole-day narrative in a few bullets, with the most important growth signal if present.
-- 原始记录: evidence shown before the generated reflection; keep it raw or lightly normalized.
-- 事实记录: concrete events and decisions, grouped by life area.
-- 今日思考: realizations, questions, delayed interpretations, decision logic, and ideas worth revisiting.
-- 状态分析: observed and cautiously inferred emotional state, work state, and interpersonal dynamics.
-- 暴露的问题: blockers, friction, judgment gaps, emotional triggers, workflow instability, sleep/health issues, or missing information.
-- 长期偏好与稳定模式: durable preferences, weak patterns, and one-off events separated so single events are not over-promoted.
-- 发现的亮点: meaningful discoveries, progress, or positive signals.
-- 可转化的行动: commitments, checks, experiments, habit/system adjustments, and research tasks.
-- 可入库摘要: concise final text suitable for direct insertion into a personal Markdown knowledge base.
+- Raw Record: evidence shown before the generated reflection; keep it raw or lightly normalized.
+- Daily Overview: the whole-day narrative in a few bullets, with the most important growth signal if present.
+- Facts: concrete events and decisions, grouped by life area.
+- Today's Thoughts: realizations, questions, delayed interpretations, decision logic, and ideas worth revisiting.
+- State Analysis: observed and cautiously inferred emotional state, work state, and interpersonal dynamics.
+- Exposed Problems: blockers, friction, judgment gaps, emotional triggers, workflow instability, sleep/health issues, or missing information.
+- Long-Term Preferences and Patterns: durable preferences, weak patterns, and one-off events separated so single events are not over-promoted.
+- Highlights: meaningful discoveries, progress, or positive signals.
+- Convertible Actions: commitments, checks, experiments, habit/system adjustments, and research tasks.
+- Archive-Ready Summary: concise final text suitable for direct insertion into a personal Markdown knowledge base.
