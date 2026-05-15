@@ -8,7 +8,7 @@ It is designed for personal growth logs, daily retrospectives, and lightweight k
 
 - Shows the raw daily record before summarizing.
 - Generates a Markdown daily reflection with facts, thoughts, emotional state, work state, relationship signals, exposed problems, highlights, actions, and an archive-ready summary.
-- Keeps Chinese, English, and mixed-language notes in their natural language.
+- Supports multilingual input and output, including Chinese, English, and mixed-language notes.
 - Asks for confirmation before publishing.
 - Publishes the confirmed Markdown entry to a GitHub repository using `scripts/publish_daily_reflection.py`.
 
@@ -41,6 +41,37 @@ Chinese trigger examples also work:
 做一下今日复盘：
 
 [粘贴今天的原始记录]
+```
+
+## Language Mode
+
+The skill supports multilingual daily notes. When you do not specify an output language, Codex should ask you to choose before generating the reflection.
+
+Recommended choices:
+
+- Preserve mixed language: keep Chinese items in Chinese, English items in English, and mixed notes mixed.
+- Chinese: use Chinese section headings and Chinese summaries.
+- English: use English section headings and English summaries.
+- Custom: use your requested bilingual style.
+
+Examples:
+
+```text
+Use $daily-reflection-publisher to generate today's daily reflection in English:
+
+[paste notes]
+```
+
+```text
+用 $daily-reflection-publisher 生成一下今天流水账，输出中文：
+
+[粘贴原始记录]
+```
+
+```text
+Use $daily-reflection-publisher and preserve mixed language:
+
+[paste mixed Chinese-English notes]
 ```
 
 ## Configure GitHub Publishing
