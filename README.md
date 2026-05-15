@@ -2,6 +2,8 @@
 
 Turn messy daily notes into a structured personal-growth Markdown reflection, confirm the result, then publish it to your own GitHub repo.
 
+![Daily Reflection Publisher preview](assets/preview.svg)
+
 ## Quick Start
 
 Copy this skill into Codex:
