@@ -1,35 +1,25 @@
 # Daily Reflection Publisher
 
-Daily Reflection Publisher is a Codex skill for turning messy daily notes into a structured Markdown reflection, then publishing the confirmed entry to a GitHub repository.
+Turn messy daily notes into a structured personal-growth Markdown reflection, confirm the result, then publish it to your own GitHub repo.
 
-It is designed for personal growth logs, daily retrospectives, and lightweight knowledge-base storage.
+## Quick Start
 
-## What It Does
-
-- Shows the raw daily record before summarizing.
-- Generates a Markdown daily reflection with facts, thoughts, emotional state, work state, relationship signals, exposed problems, highlights, actions, and an archive-ready summary.
-- Supports multilingual input and output, including Chinese, English, and mixed-language notes.
-- Asks for confirmation before publishing.
-- Publishes the confirmed Markdown entry to a GitHub repository using `scripts/publish_daily_reflection.py`.
-
-## Install
-
-Copy this folder into your Codex skills directory:
+Copy this skill into Codex:
 
 ```bash
 mkdir -p ~/.codex/skills
 cp -R daily-reflection-publisher ~/.codex/skills/
 ```
 
-Then invoke it in Codex:
+Use it:
 
 ```text
-Use $daily-reflection-publisher to generate today's daily reflection:
+Use $daily-reflection-publisher to generate today's daily reflection.
 
-[paste your raw daily notes here]
+[paste your raw daily notes]
 ```
 
-Chinese trigger examples also work:
+Chinese works too:
 
 ```text
 用 $daily-reflection-publisher 生成一下今天流水账：
@@ -37,30 +27,18 @@ Chinese trigger examples also work:
 [粘贴今天的原始记录]
 ```
 
-```text
-做一下今日复盘：
+## Configure Two Things
 
-[粘贴今天的原始记录]
-```
+### 1. Output language
 
-## Language Mode
+Tell the skill what language you want:
 
-The skill supports multilingual daily notes. When you do not specify an output language, Codex should ask you to choose before generating the reflection.
+- `Preserve mixed language`: keep Chinese as Chinese, English as English, and mixed notes mixed.
+- `Chinese`: output Chinese headings and summaries.
+- `English`: output English headings and summaries.
+- `Custom`: use your requested bilingual style.
 
-Recommended choices:
-
-- Preserve mixed language: keep Chinese items in Chinese, English items in English, and mixed notes mixed.
-- Chinese: use Chinese section headings and Chinese summaries.
-- English: use English section headings and English summaries.
-- Custom: use your requested bilingual style.
-
-Examples:
-
-```text
-Use $daily-reflection-publisher to generate today's daily reflection in English:
-
-[paste notes]
-```
+Example:
 
 ```text
 用 $daily-reflection-publisher 生成一下今天流水账，输出中文：
@@ -68,76 +46,48 @@ Use $daily-reflection-publisher to generate today's daily reflection in English:
 [粘贴原始记录]
 ```
 
-```text
-Use $daily-reflection-publisher and preserve mixed language:
+If you do not specify a language, the skill should ask you to choose before generating the reflection.
 
-[paste mixed Chinese-English notes]
-```
+### 2. GitHub repo
 
-## Configure GitHub Publishing
-
-This repository does not include a hardcoded GitHub account or target repo. You must use your own GitHub repository for publishing.
-
-Create an empty repository, for example:
-
-```text
-https://github.com/YOUR_USERNAME/YOUR_DAILY_REPO.git
-```
-
-When publishing manually, pass your repo URL:
-
-```bash
-scripts/publish_daily_reflection.py \
-  --date 2026-05-15 \
-  --input /path/to/confirmed-entry.md \
-  --repo-url https://github.com/YOUR_USERNAME/YOUR_DAILY_REPO.git
-```
-
-Or configure it with an environment variable:
+Create your own GitHub repo for daily entries, then provide its URL when publishing.
 
 ```bash
 export DAILY_REFLECTION_REPO_URL="https://github.com/YOUR_USERNAME/YOUR_DAILY_REPO.git"
 ```
 
-Optional local clone directory:
-
-```bash
-export DAILY_REFLECTION_REPO_DIR="$HOME/.daily-reflection-publisher/repo"
-```
-
-If no existing date-based convention is found in the target repo, the script writes entries to:
+The default output path is:
 
 ```text
 daily/YYYY-MM-DD.md
 ```
 
-## Publishing Flow
+## What the Skill Produces
 
-The skill should publish only after you approve the generated reflection.
+- Raw record
+- Daily overview
+- Facts
+- Thoughts
+- Emotional, work, and relationship state analysis
+- Exposed problems
+- Long-term preferences and patterns
+- Highlights
+- Actions
+- Archive-ready summary
 
-1. Generate the Markdown reflection.
-2. Review the output.
-3. Confirm that no changes are needed.
-4. Run the publish script with your configured GitHub repo.
-5. Delete the temporary input Markdown after a successful publish.
+The skill asks for confirmation before publishing. It will not overwrite an existing daily entry unless you explicitly approve overwrite behavior.
 
-The script refuses to overwrite an existing date file unless `--overwrite` is passed. Use that option only after explicitly deciding to replace the existing entry.
+## Manual Publish Command
 
-## Script Options
+Most users do not need this, but the underlying script is:
 
 ```bash
-scripts/publish_daily_reflection.py --help
+scripts/publish_daily_reflection.py \
+  --date YYYY-MM-DD \
+  --input /path/to/confirmed-entry.md \
+  --repo-url https://github.com/YOUR_USERNAME/YOUR_DAILY_REPO.git
 ```
 
-Common options:
+## Privacy
 
-- `--repo-url`: target GitHub repository URL.
-- `--repo-dir`: local clone directory.
-- `--output-path`: repo-relative path for the entry.
-- `--dry-run`: show what would happen without writing, committing, or pushing.
-- `--overwrite`: allow replacing an existing entry.
-- `--no-push`: commit locally but skip push.
-
-## Privacy Notes
-
-Daily reflections can contain sensitive personal information. Before making your target repository public, review the generated Markdown carefully. For private journals, use a private GitHub repository.
+Daily reflections can contain sensitive personal information. Use a private GitHub repo unless you intentionally want the entries to be public.
