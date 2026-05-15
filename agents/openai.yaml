@@ -1,0 +1,4 @@
+interface:
+  display_name: "Daily Reflection Publisher"
+  short_description: "Turn daily logs into growth reflections"
+  default_prompt: "Use $daily-reflection-publisher to turn my mixed personal daily notes into a complete Markdown reflection, confirm it with me, then publish it to my configured GitHub repo if approved."
